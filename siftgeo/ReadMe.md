@@ -33,3 +33,8 @@ Matlab script for reading siftgeo binary file.
 #### test_matchSIFT.m
 
 Matlab script for feature matching between two image files. Change the `src_file_$` path before running.
+
+## Requirements
+
+- The binary programme should be run in Linux x64 envirement. It only processes pgm formatted images.
+- The shell scripts are used for converting image format from jpeg/bmp to pgm. [ImageMagic](http://www.imagemagick.org) is required.
