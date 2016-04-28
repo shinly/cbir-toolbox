@@ -5,6 +5,9 @@ expanded_features = zeros(size(features));
 [dim, num] = size(features);
 
 for i = 1 : num
+    if mod(i, 1000) == 0
+        fprintf('%d/%d\n', i, num);
+    end
     neighbor_hoods = ones(1, k-2+1);
     if fix_rn == 0
         for j = 2 : k

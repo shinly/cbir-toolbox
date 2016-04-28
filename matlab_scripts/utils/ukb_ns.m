@@ -1,8 +1,9 @@
-function [ns, searchResult2] = ukb_ns(features)
+function [ns, searchResult] = ukb_ns(features)
 imgNum = 10200;
 % featAll = reshape(featAll, dimNum, imgNum);
 
 searchResult2 = zeros(imgNum, 4);
+searchResult = zeros(imgNum, 4);
 % similarity = zeros(imgNum, imgNum);
 % nsWeights = log2(4.1./(ns_scores+0.1)) + 0.1;
 
@@ -16,6 +17,7 @@ parfor i = 1 : imgNum
     featDis = sum(features .* queryFeat); % .* idfWeightMat); % weighted cosine distance
    
     [~, IX] = sort(featDis, 'descend');
+    searchResult(i, :) = IX(1:4);
     tq = floor((i - 1) / 4);
     for j = 1 : 4
         td = floor((IX(j) - 1) / 4);

@@ -1,8 +1,9 @@
-function ns = ukb_ns_cdm(features, cdms)
+function [ns, searchResult] = ukb_ns_cdm(features, cdms)
 imgNum = 10200;
 % featAll = reshape(featAll, dimNum, imgNum);
 
 searchResult2 = zeros(imgNum, 4);
+searchResult = zeros(imgNum, 4);
 % similarity = zeros(imgNum, imgNum);
 % nsWeights = log2(4.1./(ns_scores+0.1)) + 0.1;
 
@@ -19,6 +20,7 @@ parfor i = 1 : imgNum
     featDis = sum((queryFeat - features).^2) ./ cdms;
     [~, IX] = sort(featDis);
     tq = floor((i - 1) / 4);
+    searchResult(i, :) = IX(1:4);
 
     for j = 1 : 4
         td = floor((IX(j) - 1) / 4);

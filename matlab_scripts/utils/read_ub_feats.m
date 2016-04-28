@@ -11,7 +11,8 @@ for i = 0 : image_number - 1
     if mod(i, 1000) == 0
         fprintf('%d\n', i);
     end
-    folder_path = num2str(floor(i/1000));
+%     folder_path = num2str(floor(i/1000));
+    folder_path = '';
     img_name = num2str(i);
     full_name = '00000';
     full_name(6-length(img_name):end) = img_name;
